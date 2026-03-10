@@ -1,0 +1,9 @@
+0x0 0x20 0x0 0x20
+addi x10,x0,7
+xor x11,x10,x10
+xor x12,x11,x10
+xor x13,x11,x11
+addi x13,x0,8
+xor x14,x13,x10
+addi x17,x0,2
+ecall

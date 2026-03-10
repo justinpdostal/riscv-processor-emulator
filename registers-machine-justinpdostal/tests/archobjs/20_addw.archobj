@@ -1,0 +1,13 @@
+0x0 0x30 0x0 0x30
+addiw x10,x0,1
+slli x10,x10,32
+addiw x11,x0,1
+slli x11,x11,32
+addi x11,x11,-1
+addi x12,x0,1
+addi x13,x0,-1
+addw x14,x10,x12
+addw x15,x10,x13
+addw x16,x11,x12
+addi x17,x0,2
+ecall

@@ -1,0 +1,42 @@
+
+Sections:
+Idx Name          Size      VMA               LMA               File off  Algn
+  0 .text         00000024  0000000000000000  0000000000000000  00001000  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .debug_aranges 00000030  0000000000000000  0000000000000000  00001030  2**4
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+  2 .debug_info   0000002e  0000000000000000  0000000000000000  00001060  2**0
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+  3 .debug_abbrev 00000014  0000000000000000  0000000000000000  0000108e  2**0
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+  4 .debug_line   0000007e  0000000000000000  0000000000000000  000010a2  2**0
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+  5 .debug_str    00000076  0000000000000000  0000000000000000  00001120  2**0
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+
+Disassembly of section .text:
+
+0000000000000000 <_start>:
+
+/* The starting instructions that call main */
+.section .text
+.global _start
+_start:
+	li a0, 7
+   0:	00700513          	addi	a0,zero,7
+    li a1, 0
+   4:	00000593          	addi	a1,zero,0
+    or a2, a0, a0 /* 111 | 111 = 111 */
+   8:	00a56633          	or	a2,a0,a0
+    or a3, a0, a1 /* 111 | 000 = 111 */
+   c:	00b566b3          	or	a3,a0,a1
+    or a4, a1, a1 /* 000 | 000 = 000 */
+  10:	00b5e733          	or	a4,a1,a1
+    li a4, 8
+  14:	00800713          	addi	a4,zero,8
+    xor a5, a0, a4 /* 1000 | 111 = 1111 */
+  18:	00e547b3          	xor	a5,a0,a4
+	li a7, 0x2
+  1c:	00200893          	addi	a7,zero,2
+	ecall
+  20:	00000073          	ecall

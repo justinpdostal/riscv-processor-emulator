@@ -1,0 +1,8 @@
+0x0 0x1c 0x0 0x1c
+addi x10,x0,5
+addi x11,x10,3
+lui x12,524288
+addiw x12,x12,-1
+addi x13,x12,2
+addi x17,x0,2
+ecall

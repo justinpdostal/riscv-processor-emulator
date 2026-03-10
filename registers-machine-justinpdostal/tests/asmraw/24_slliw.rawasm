@@ -1,0 +1,32 @@
+
+Sections:
+Idx Name          Size      VMA               LMA               File off  Algn
+  0 .text         00000010  0000000000000000  0000000000000000  00001000  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .debug_aranges 00000030  0000000000000000  0000000000000000  00001010  2**4
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+  2 .debug_info   0000002e  0000000000000000  0000000000000000  00001040  2**0
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+  3 .debug_abbrev 00000014  0000000000000000  0000000000000000  0000106e  2**0
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+  4 .debug_line   00000063  0000000000000000  0000000000000000  00001082  2**0
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+  5 .debug_str    00000079  0000000000000000  0000000000000000  000010e5  2**0
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+
+Disassembly of section .text:
+
+0000000000000000 <_start>:
+
+/* The starting instructions that call main */
+.section .text
+.global _start
+_start:
+	li a0, 0x1
+   0:	00100513          	addi	a0,zero,1
+	slliw a1, a0, 0x1f /* Left shit 1 by 31 bits */
+   4:	01f5159b          	slliw	a1,a0,0x1f
+	li a7, 0x2
+   8:	00200893          	addi	a7,zero,2
+	ecall
+   c:	00000073          	ecall

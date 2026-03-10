@@ -1,0 +1,6 @@
+0x0 0x14 0x0 0x14
+addi x17,x0,5
+ecall
+addi x17,x0,2
+ecall
+addi x0,x0,0

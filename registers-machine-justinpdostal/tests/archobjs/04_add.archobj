@@ -1,0 +1,11 @@
+0x0 0x28 0x0 0x28
+addi x10,x0,3
+addi x11,x0,4
+add x12,x10,x11
+addi x13,x0,-5
+add x14,x12,x13
+addiw x14,x0,1
+slli x14,x14,32
+addi x14,x14,-1
+addi x17,x0,2
+ecall

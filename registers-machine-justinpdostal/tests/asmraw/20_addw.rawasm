@@ -1,0 +1,45 @@
+
+Sections:
+Idx Name          Size      VMA               LMA               File off  Algn
+  0 .text         00000030  0000000000000000  0000000000000000  00001000  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .debug_aranges 00000030  0000000000000000  0000000000000000  00001030  2**4
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+  2 .debug_info   0000002e  0000000000000000  0000000000000000  00001060  2**0
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+  3 .debug_abbrev 00000014  0000000000000000  0000000000000000  0000108e  2**0
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+  4 .debug_line   00000080  0000000000000000  0000000000000000  000010a2  2**0
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+  5 .debug_str    00000078  0000000000000000  0000000000000000  00001122  2**0
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+
+Disassembly of section .text:
+
+0000000000000000 <_start>:
+
+/* The starting instructions that call main */
+.section .text
+.global _start
+_start:
+	li a0, 0x100000000
+   0:	0010051b          	addiw	a0,zero,1
+   4:	02051513          	slli	a0,a0,0x20
+	li a1, 0xffffffff
+   8:	0010059b          	addiw	a1,zero,1
+   c:	02059593          	slli	a1,a1,0x20
+  10:	fff58593          	addi	a1,a1,-1
+	li a2, 0x1
+  14:	00100613          	addi	a2,zero,1
+	li a3, -1
+  18:	fff00693          	addi	a3,zero,-1
+  	addw a4, a0, a2 /* Lower 32 bits => 0 + 0x1 = 0x1 */
+  1c:	00c5073b          	addw	a4,a0,a2
+	addw a5, a0, a3 /* 0 - 1 = -1 */
+  20:	00d507bb          	addw	a5,a0,a3
+	addw a6, a1, a2 /* a6 = 0 since lower 32 bits are output */
+  24:	00c5883b          	addw	a6,a1,a2
+	li a7, 0x2
+  28:	00200893          	addi	a7,zero,2
+	ecall
+  2c:	00000073          	ecall

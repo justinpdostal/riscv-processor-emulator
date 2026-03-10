@@ -1,0 +1,14 @@
+0x0 0x24 0x0 0x24
+addi x12,x10,1
+addiw x12,x10,1
+ori x12,x10,1
+andi x12,x10,1
+xori x12,x10,1
+sltiu x12,x10,1
+slti x12,x10,1
+beq x10,x11,4
+bne x10,x11,4
+blt x10,x11,4
+bltu x10,x11,4
+bge x10,x11,4
+bgeu x10,x11,4

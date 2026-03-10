@@ -1,0 +1,42 @@
+
+Sections:
+Idx Name          Size      VMA               LMA               File off  Algn
+  0 .text         00000024  0000000000000000  0000000000000000  00001000  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .debug_aranges 00000030  0000000000000000  0000000000000000  00001030  2**4
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+  2 .debug_info   0000002e  0000000000000000  0000000000000000  00001060  2**0
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+  3 .debug_abbrev 00000014  0000000000000000  0000000000000000  0000108e  2**0
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+  4 .debug_line   0000007f  0000000000000000  0000000000000000  000010a2  2**0
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+  5 .debug_str    00000077  0000000000000000  0000000000000000  00001121  2**0
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+
+Disassembly of section .text:
+
+0000000000000000 <_start>:
+
+/* The starting instructions that call main */
+.section .text
+.global _start
+_start:
+	li a0, 1
+   0:	00100513          	addi	a0,zero,1
+	li a1, 8
+   4:	00800593          	addi	a1,zero,8
+    li a2, 7
+   8:	00700613          	addi	a2,zero,7
+    li a3, -2
+   c:	ffe00693          	addi	a3,zero,-2
+    srl a4, a1, a0 /* a4 = 1000 -> 0100 = 4 */
+  10:	00a5d733          	srl	a4,a1,a0
+    srl a5, a2, a0 /* a5 = 111 -> 011 = 3 */
+  14:	00a657b3          	srl	a5,a2,a0
+    srl a6, a3, a0 /* Should become max: 0x7fffffff*/
+  18:	00a6d833          	srl	a6,a3,a0
+    li a7, 0x2
+  1c:	00200893          	addi	a7,zero,2
+	ecall
+  20:	00000073          	ecall
